@@ -12,9 +12,11 @@ export const Projects = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1337/api/projects")
-      .then(({ data }) => setProjects(data.data))
+      .get("http://localhost:1337/api/projects?populate=*")
+      .then(({ data }) => { console.log(data); setProjects(data.data)})
       .catch((error) => setError(error));
+
+      
   }, []);
 
   return (
